@@ -1,6 +1,6 @@
-# nuxt axios plugin
+# Nuxt axios plugin
 
-A nuxt axios plugin to intercept each request to: append constant paramaters; display error toast
+A nuxt axios plugin that uses [interceptors](https://axios.nuxtjs.org/helpers.html#interceptors) each request to: append constant paramaters; display error toast messages
 
 ```
 export default function ({ $axios, app, store }) {
