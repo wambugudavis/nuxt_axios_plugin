@@ -17,3 +17,7 @@ export default function ({ $axios, app, store }) {
 }
   
 ```
+
+## Built With
+
+* [Toast](https://github.com/nuxt-community/modules/tree/master/packages/toast) - Plugin to render toast messages
