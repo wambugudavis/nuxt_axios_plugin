@@ -1,7 +1,12 @@
-export default ({store, app: {$axios}}) => {
-  $axios.defaults.transformRequest = [function (data) {
-    data.TOKEN = store.state.app.firebaseToken;
-    return JSON.stringify(data);
-  }];
+export default function ({ $axios, app, store }) {
+  $axios.onError((error) => {
+    app.$toast.error(error.response.statusText) //nuxt toast plugin: npm i @nuxtjs/toast
+  })
 
-  // $axios.defaults.headers.post['Content-Type'] = 'application/json';
+  $axios.onRequest((config) => {
+    const authUrlRegex = new RegExp('^/auth/')
+    if (!config.url.match(authUrlRegex)) {  //filter routes to modify payload
+        config.data.token = store.state.auth.token
+    }
+  })
+}
